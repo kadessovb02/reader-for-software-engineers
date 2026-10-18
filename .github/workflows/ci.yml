@@ -1,0 +1,30 @@
+name: macOS build and offline checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build native app (macOS 14+)
+        run: ./build.sh
+      - name: Test synthetic books and mocked AI
+        run: ./scripts/test.sh
+      - name: Archive app
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent \
+            "dist/Лист — Reader for Engineers.app" \
+            "dist/Reader-for-Engineers-${{ runner.arch }}.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Reader-for-Engineers-${{ runner.arch }}
+          path: dist/Reader-for-Engineers-*.zip
+          retention-days: 14

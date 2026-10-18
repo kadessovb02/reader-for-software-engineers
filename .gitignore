@@ -1,0 +1,66 @@
+# macOS / editors
+.DS_Store
+._*
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Local builds and generated artifacts
+dist/
+build/
+.build/
+.swiftpm/
+.build-cache/
+*.app/
+*.dSYM/
+*.o
+*.swiftmodule
+*.swiftdoc
+*.swiftsourceinfo
+*.zip
+*.dmg
+*.pkg
+
+# Private libraries, demo runtime state, caches, and test output
+Books/
+DemoData/
+demo-data/
+.local-reader-data/
+runtime/
+userdata/
+user-data/
+work/
+outputs/
+tmp/
+*.log
+library.json
+conversations.json
+practice.json
+content.json
+*.sqlite
+*.sqlite3
+*.db
+
+# Imported books belong to their owners; never commit them
+*.pdf
+*.epub
+*.fb2
+*.mobi
+*.azw
+*.azw3
+*.djvu
+*.djv
+
+# Authentication and secrets
+.env
+.env.*
+!.env.example
+.codex/
+auth.json
+credentials.json
+secrets.json
+*.pem
+*.key
+*.p12
+*.mobileprovision
